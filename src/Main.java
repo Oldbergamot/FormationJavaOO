@@ -15,6 +15,12 @@ public class Main {
         System.out.println("Number of humans created : "+Human.getCOUNT());
         System.out.println();
 
+        System.out.println("Surchage de constructeur");
+        System.out.println("========================");
+        Human person2 = new Human("Arnaud" , "Daune" , "Belge", LocalDate.of(1987,12,15));
+        person2.displayPerson();
+        System.out.println();
+
         System.out.println("Utilisation de la classe dice");
         System.out.println("==================================");
 
