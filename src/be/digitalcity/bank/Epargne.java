@@ -9,8 +9,9 @@ public class Epargne extends Compte{
         super(numero, solde, titulaire);
     }
 
+    @Override
     public void retrait(double montant){
-        super.retrait(montant);
+        if(this.getSolde() - montant >= 0) this.solde -= montant;
         this.dateDernierRetrait = LocalDate.now();
     }
 

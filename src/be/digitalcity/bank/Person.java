@@ -1,6 +1,7 @@
 package be.digitalcity.bank;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Person {
 
@@ -40,5 +41,18 @@ public class Person {
 
     public String displayPerson(){
         return "Name : "+name+ ", Firstname : "+firstName+ ", Birthday : "+birthday;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(firstName, person.firstName) && Objects.equals(birthday, person.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, firstName, birthday);
     }
 }
