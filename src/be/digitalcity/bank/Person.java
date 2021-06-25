@@ -37,4 +37,8 @@ public class Person {
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
+
+    public String displayPerson(){
+        return "Name : "+name+ ", Firstname : "+firstName+ ", Birthday : "+birthday;
+    }
 }
