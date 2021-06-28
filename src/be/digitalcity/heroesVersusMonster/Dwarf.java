@@ -1,10 +1,10 @@
 package be.digitalcity.heroesVersusMonster;
 
-public class Dwarf extends Character{
+public class Dwarf extends Heroes{
 
 
-    Dwarf(String name) {
-        super(name);
+    Dwarf(Position position, String name) {
+        super(position, name);
         this.sta += 2;
     }
 

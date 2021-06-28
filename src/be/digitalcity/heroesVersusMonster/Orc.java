@@ -3,9 +3,8 @@ package be.digitalcity.heroesVersusMonster;
 import java.util.Random;
 
 public class Orc extends Monster{
-    Orc(String name, short x, short y) {
-        super(name,x,y);
-        this.force +=1;
+    Orc(Position position){
+        super(position);
     }
 
     private void generateLoot() {

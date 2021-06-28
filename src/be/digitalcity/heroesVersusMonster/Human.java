@@ -1,10 +1,9 @@
 package be.digitalcity.heroesVersusMonster;
 
 public class Human extends Heroes{
-    private int PV;
 
-    Human (String name) {
-        super(name);
+    Human (Position position, String name) {
+        super(position, name);
         this.force += 1;
         this.sta += 1;
     }

@@ -2,13 +2,14 @@ package be.digitalcity.heroesVersusMonster;
 
 public class Heroes extends Character{
 
-    protected short x;
-    protected short y;
+    String name;
 
-    Heroes(String name) {
-        super(name);
-        this.x = 0;
-        this.y = 0;
+    Heroes(Position position, String name) {
+        super(position);
+        this.name = name;
+    }
 
+    public String getName() {
+        return this.name;
     }
 }

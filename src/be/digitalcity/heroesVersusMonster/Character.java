@@ -1,23 +1,40 @@
 package be.digitalcity.heroesVersusMonster;
 
 public abstract class Character {
-
-    private final String name;
     protected int force;
     protected int sta;
     protected int totalPV;
     protected int PV;
     protected Inventory inventory;
     protected boolean isAlive;
+    protected short x;
+    protected short y;
+    protected Position position;
 
-    Character(String name) {
-        this.name = name;
+    public short getX() {
+        return x;
+    }
+
+    public void setX(short x) {
+        this.x = x;
+    }
+
+    public short getY() {
+        return y;
+    }
+
+    public void setY(short y) {
+        this.y = y;
+    }
+
+    Character(Position position) {
         this.sta = generateStat(6);
         this.force = generateStat(6);
         this.PV =  generatePV();
         this.totalPV = PV;
         this.inventory = new Inventory();
         this.isAlive = true;
+        this.position = position;
         }
 
     /**
@@ -54,10 +71,14 @@ public abstract class Character {
 
     protected void attack(Character other){
         other.removePV(Dice.thow(4)+generateModifier(this.force));
+        //System.out.println(this.name +" attaque "+ other.name);
+        this.displayPV();
+        other.displayPV();
         if(other.PV<=0) {
-            setAlive(false);
+            other.setAlive(false);
             this.getLoot(other);
         }
+
     }
 
     protected boolean getAlive() {
@@ -73,7 +94,7 @@ public abstract class Character {
     }
 
     public void displayPV() {
-        System.out.println(this.PV);
+        System.out.println("PV : "+this.PV);
     }
 
     public void getLoot(Character other) {
@@ -85,13 +106,9 @@ public abstract class Character {
         return this.inventory;
     }
 
+
     public void restoreHealth() {
         this.PV = this.totalPV;
-    }
-
-    public String toString() {
-        return this.name + " a " +this.PV+ " de point de vie et "+this.sta + " en endurance et "+this.force+" en force"+
-                " Inventaire : "+this.inventory.getGold()+ " or "+ this.getInventory().getLeather()+" leather";
     }
 
 }

@@ -3,8 +3,8 @@ package be.digitalcity.heroesVersusMonster;
 import java.util.Random;
 
 public class Wolf extends Monster{
-    Wolf(String name, short x,short y) {
-        super(name, x, y);
+    Wolf(Position position) {
+        super(position);
         generateLoot();
     }
 

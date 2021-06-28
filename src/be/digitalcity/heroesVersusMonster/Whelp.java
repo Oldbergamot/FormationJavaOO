@@ -3,8 +3,8 @@ package be.digitalcity.heroesVersusMonster;
 import java.util.Random;
 
 public class Whelp extends Monster{
-    Whelp(String name, short x, short y) {
-        super(name, x, y);
+    Whelp(Position position) {
+        super(position);
         this.sta += 1;
     }
 
