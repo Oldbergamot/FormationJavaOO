@@ -7,25 +7,7 @@ public abstract class Character {
     protected int PV;
     protected Inventory inventory;
     protected boolean isAlive;
-    protected short x;
-    protected short y;
     protected Position position;
-
-    public short getX() {
-        return x;
-    }
-
-    public void setX(short x) {
-        this.x = x;
-    }
-
-    public short getY() {
-        return y;
-    }
-
-    public void setY(short y) {
-        this.y = y;
-    }
 
     Character(Position position) {
         this.sta = generateStat(6);
@@ -36,6 +18,14 @@ public abstract class Character {
         this.isAlive = true;
         this.position = position;
         }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
 
     /**
      * Generate an array of int. Fill the array with the value of a dice
