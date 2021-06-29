@@ -1,9 +1,13 @@
 package be.digitalcity.lambda;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -43,21 +47,39 @@ public class Main {
 
         //Exercice 1
 
-        System.out.println("Exercice 1 \n=============="); //si agé de moins de 40, on sout sous le format donné et le nom
-        filterThenDisplay(persons, person -> person.getAge()<40, person -> System.out.println(person.getNom()+ " fait partie de la tranche d'age des moins de 40 ans"));
+        System.out.println("Exercice 1 \n" +
+                "=============="); //si agé de moins de 40, on sout sous le format donné et le nom
+        filterThenDisplay(persons, person -> person.getAge()<40,
+                person -> System.out.println(person.getNom()+
+                        " fait partie de la tranche d'age des moins de 40 ans"));
 
         //variation sur l'exo 1
 
-        System.out.println("\n" +
+        System.out.println("" +
+                "\n" +
                 "Variation une sur l'exercice 1" +
                 "\n-------------------------------");
         filterThenDisplay(persons , person -> person.getPrenom().equalsIgnoreCase("flavian"),
                 System.out::println);
-        System.out.println("\n" +
+        System.out.println("" +
+                "\n" +
                 "Variation deux sur l'exercice 1" +
                 "\n---------------------------------");
         filterThenDisplay(persons, person -> person.getDateEngagement().getYear()>=2015,
                 person -> System.out.println(person.getNom()+ " a été embauchée durant ou après l'année 2015"));
+
+        System.out.println("" +
+                "\n" +
+                "Exercice 2" +
+                "\n==================\n");
+        boiteACalcul(9,5, (a,b) -> System.out.println(a+b));
+
+        System.out.println("" +
+                "\n" +
+                "Variation sur exercice 2 " +
+                "\n---------------------\n");
+        boiteACalculV2(1,5, (a,b) -> System.out.println(a+b));
+
     }
 
 
@@ -127,7 +149,7 @@ public class Main {
         System.out.println(sumOfSquare);
     }
 
-    public static void exemple1() {
+    public static void example1() {
         List<Integer>ints = new ArrayList<>();
         ints.add(1);
         ints.add(2);
@@ -207,7 +229,73 @@ public class Main {
             if(predicate.test(p)){
                 consumer.accept(p);
             }
+        } //ou
+//        persons.forEach(item -> {
+//            if (predicate.test(item)) {
+//                consumer.accept(item);
+//            }
+//        });
+    }
+
+    /*
+     * Ecrire une méthode qui servira de boîte à calcul sur deux variables int
+     * Cette méthode prendra en paramètre les 2 nombres, la lambda pour le calcul
+     * et affichera le résutat
+     */
+    public static void boiteACalcul(int a, int b, BiConsumer<Integer, Integer> consumer){
+        consumer.accept(a,b);
+    }
+
+    public static void boiteACalculV2(int a , int b, Calculable operation){
+        operation.execute(a,b);
+    }
+
+    /*
+    retourne la moyenne des ages de la liste placée en paramètre
+     */
+    public static void getAgeMean(List <Person> list){
+        if(list == null || list.isEmpty()) return;
+        System.out.println(
+        list.stream()
+//                .mapToInt(Person::getAge)
+                .mapToInt(person -> person.getAge())
+                .average()
+        .orElse(-1D));
+     }
+
+     /*
+     trier du moins agé au plus agé, 3 façons
+      */
+
+    public static void sortList(List <Person> list) {
+        try {
+            list.sort((person, other) -> person.getAge()- other.getAge());
+
+            list.sort(Comparator.comparingInt(Person::getAge));
+
+            list.stream()                       //nb : le stream créée une copie locale et ne sort pas la liste passée en paramètre
+                    .mapToInt(Person::getAge)
+                    .sorted()
+                    .forEach(System.out::println);
+
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
+    public static ArrayList<PersonneSanctifiee> modifyList(List <Person> list) {
+        ArrayList<PersonneSanctifiee> result = new ArrayList<>();
+
+        list.stream()
+                .forEach(person -> {
+                    String name = person.getNom()+person.getPrenom();
+                    ZonedDateTime date1 = ZonedDateTime.from(person.getDateEngagement());
+                    ZonedDateTime dateNow = ZonedDateTime.now();
+                    Long totalSec = ChronoUnit.SECONDS.between(date1, dateNow);
+                    result.add(new PersonneSanctifiee(name,totalSec.intValue()));
+                });
+
+        return result;
+    }
 }

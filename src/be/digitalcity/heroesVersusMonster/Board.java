@@ -67,4 +67,8 @@ public class Board {
     public List<Monster> getMonsters() {
         return monsters;
     }
+
+    public void removeMonster(Monster monster){
+        this.monsters.remove(monster);
+    }
 }

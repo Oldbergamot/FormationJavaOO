@@ -59,17 +59,7 @@ public abstract class Character {
         return 2;
     }
 
-    protected void attack(Character other){
-        other.removePV(Dice.thow(4)+generateModifier(this.force));
-        //System.out.println(this.name +" attaque "+ other.name);
-        this.displayPV();
-        other.displayPV();
-        if(other.PV<=0) {
-            other.setAlive(false);
-            this.getLoot(other);
-        }
-
-    }
+    protected abstract void attack(Character other);
 
     protected boolean getAlive() {
         return this.isAlive;
