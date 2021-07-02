@@ -1,6 +1,9 @@
 package be.digitalcity.lambda;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Objects;
 
 public class Person {
@@ -69,5 +72,12 @@ public class Person {
                 ", age=" + age +
                 ", dateEngagement=" + dateEngagement +
                 '}';
+    }
+
+    public long convertDateEngagement() {
+        return LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli() - dateEngagement
+                .atTime(0,0,0)
+                .toInstant(ZoneOffset.UTC)
+                .toEpochMilli();
     }
 }

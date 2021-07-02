@@ -1,8 +1,8 @@
 package be.digitalcity.lambda;
 
-import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
     public static int [] tab = {1,2,3,4,5,6,7,8,9};
@@ -79,6 +80,8 @@ public class Main {
                 "Variation sur exercice 2 " +
                 "\n---------------------\n");
         boiteACalculV2(1,5, (a,b) -> System.out.println(a+b));
+
+        System.out.println(modifyList(persons));
 
     }
 
@@ -284,18 +287,21 @@ public class Main {
         }
     }
 
-    public static ArrayList<PersonneSanctifiee> modifyList(List <Person> list) {
-        ArrayList<PersonneSanctifiee> result = new ArrayList<>();
-
-        list.stream()
+    public static ArrayList<PersonneSimplifiée> modifyList(List <Person> list) {
+        ArrayList<PersonneSimplifiée> result = new ArrayList<>();
+        list
                 .forEach(person -> {
                     String name = person.getNom()+person.getPrenom();
-                    ZonedDateTime date1 = ZonedDateTime.from(person.getDateEngagement());
-                    ZonedDateTime dateNow = ZonedDateTime.now();
-                    Long totalSec = ChronoUnit.SECONDS.between(date1, dateNow);
-                    result.add(new PersonneSanctifiee(name,totalSec.intValue()));
+                    long totalSec = person.convertDateEngagement();
+                    result.add(new PersonneSimplifiée(name, (int) totalSec));
                 });
-
         return result;
+    }
+
+    public static void transformData() {
+        List<PersonneSimplifiée> result = persons
+                .stream()
+                .map(x -> new PersonneSimplifiée(x.getNom(),x.getPrenom(), x.convertDateEngagement()))
+                .collect(Collectors.toList());
     }
 }
