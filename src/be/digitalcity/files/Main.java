@@ -50,7 +50,7 @@ public class Main {
         }
     }
 
-    public static void readFilesWithIO(String path) {
+    public static void readFilesWith(String path) {
         BufferedInputStream bis;
         FileInputStream fis;
 
@@ -68,7 +68,7 @@ public class Main {
         }
     }
 
-    public static void readFilesWithNewPackage(String path) {
+    public static void readFilesWithNIO(String path) {
         BufferedInputStream bis = null;
         FileInputStream fis = null;
 
@@ -97,7 +97,7 @@ public class Main {
     public static void compareSpeedReading(String path) {
         long time = System.currentTimeMillis();
         for (int i = 0 ; i < 10000 ; i++) {
-            readFilesWithIO(path);
+            readFilesWith(path);
         }
         System.out.println("\nTemps d'execution IO : "+(System.currentTimeMillis()-time));
         time = System.currentTimeMillis();
@@ -112,7 +112,7 @@ public class Main {
         System.out.println("\nTemps d'execution Buffered : "+(System.currentTimeMillis()-time));
         time = System.currentTimeMillis();
         for (int i = 0 ; i < 10000 ; i++) {
-            readFilesWithNewPackage(path);
+            readFilesWithNIO(path);
         }
         System.out.println("\nTemps d'execution nouveau package : "+(System.currentTimeMillis()-time));
     }

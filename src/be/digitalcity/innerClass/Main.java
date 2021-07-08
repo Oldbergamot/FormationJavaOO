@@ -1,4 +1,4 @@
-package be.digitalcity.innverClass;
+package be.digitalcity.innerClass;
 
 public class Main {
     public static void main(String[] args) {

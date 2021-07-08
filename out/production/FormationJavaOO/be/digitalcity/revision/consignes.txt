@@ -1,0 +1,65 @@
+/**
+         * Saint-Anne : Royal Seychelles Resort
+         *
+         * Vous devez réaliser le système de réservation des chambres d'un hôtel de luxe.
+         *
+         * Une réservation va devoir enregistrer différentes données :
+         * - N° de Chambre
+         * - Nb de personnes
+         * - Nom et Prénom de chaque personne
+         * - Date d'arrivée
+         * - Date de départ
+         * - Liste des options
+         * - Prix total HTVA
+         *
+         * et être capable de fournir différents actions :
+         * - être affichée
+         * - calculer le nombre de jours d'occupation
+         * - calculer le prix TVAC de l'ensemble des données
+         *
+         * INFORMATIONS DE L'HOTEL
+         *
+         * L'hôtel comporte 20 chambres au total qui sont réparties en :
+         * - 2 suites nuptiales (MAX 2 personnes)
+         * - 4 chambres d'une personne
+         * - 10 chambres de 2 personnes
+         * - 4 chambres de 4 personnes
+         *
+         * Le prix (de votre choix) est fixé par personne et évolue
+         *
+         * - La suite est facturée 250% du prix initial par personne
+         * - Chaque personne supplémentaire est facturée avec une remise qui se calcule comme suit
+         *
+         *     Ex : prix initial / personne -> 100 EUR
+         *          - SUITES : 250 EUR / pers
+         *          - 2 personnes : ( 100 + 100 * 0.85) = 185 EUR (remise de 15 % pour la deuxième personne)
+         *          - 3 personnes : (100 + 100 * 0.85 + 100 * 0.7) = 255 EUR
+         *          - 4 personnes : (100 + 100 * 0.85 + 100 * 0.7 + 100 * 0.55) = 310 EUR
+         *
+         * Vous pouvez aussi configurer par chambre différentes options
+         * - Majordome (+ 125 EUR / jour)
+         * - Repas en chambre (+ 50 EUR / perso // jour)
+         * - Boissons All exclusive (+ 150 EUR / pers // semaine)
+         * - Excursion : Plongée sous marine  (+ 125 EUR / pers)
+         * - ... laissez libre recours à votre imagination :)
+         *
+         * APPLICATION DE RESERVATIONS
+         *
+         * Le gérant de l'hôtel doit être capable d'effectuer ces différentes actions :
+         *
+         *      1. Ajouter une nouvelle réservation
+         *      2. Afficher toutes ces réservations (commencer avec juste un mois par facilité)
+         *      3. Ouvrir sa comptabilité
+         *          3.a Calculer le montant total des réservations en cours
+         *          3.b Rechercher une réservation par un nom de personne et l'afficher
+         *      4. Quitter
+         *
+         * Bonus :
+         *
+         * Afficher les réservations dans une grille qui représente le mois en cours
+         * (cfr -> Aide_Bordures).  Pour des raisons de limitations de l'organisation
+         * de l'affichage dans la console, vous pouvez seulement remplir un carré de couleur
+         * dans le jour ad hoc et d'y placer le numéro de chambre. (cfr -> Aide_CarreRouge)
+         *
+         * Faites-moi réver !
+         */

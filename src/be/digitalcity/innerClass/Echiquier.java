@@ -1,4 +1,4 @@
-package be.digitalcity.innverClass;
+package be.digitalcity.innerClass;
 
 import java.util.ArrayList;
 import java.util.List;
