@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Option {
     private String optionName;
     private double price;
-    private Enum frequencie;
+    private Enum frequency;
     private boolean perPerson;
 
-    public Option(String optionName, double price, Enum frequencie, boolean perPerson) {
+    public Option(String optionName, double price, Enum frequency, boolean perPerson) {
         this.optionName = optionName;
         this.price = price;
-        this.frequencie = frequencie;
+        this.frequency = frequency;
         this.perPerson = perPerson;
     }
 
@@ -32,7 +32,7 @@ public class Option {
     }
 
     public Enum getFrequencie() {
-        return frequencie;
+        return frequency;
     }
 
     public boolean isPerPerson() {
@@ -48,12 +48,12 @@ public class Option {
         if (this == o) return true;
         if (!(o instanceof Option)) return false;
         Option option = (Option) o;
-        return price == option.price && perPerson == option.perPerson && Objects.equals(optionName, option.optionName) && Objects.equals(frequencie, option.frequencie);
+        return price == option.price && perPerson == option.perPerson && Objects.equals(optionName, option.optionName) && Objects.equals(frequency, option.frequency);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(optionName, price, frequencie, perPerson);
+        return Objects.hash(optionName, price, frequency, perPerson);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Option {
         return "Option{" +
                 "optionName='" + optionName + '\'' +
                 ", price=" + price +
-                ", frequencie='" + frequencie + '\'' +
+                ", frequencie='" + frequency + '\'' +
                 ", perPerson=" + perPerson +
                 '}';
     }

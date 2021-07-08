@@ -37,9 +37,9 @@ public class DataLoader {
                 optionString = line.split(",");
                 temp = Integer.parseInt(optionString[3]) == 1;
 
-                    if(optionString[2].equals("JOURNALIER")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]),Frequencie.JOURNALIER,temp));
-                    else if(optionString[2].equals("SPORADIQUE")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]),Frequencie.SPORADIQUE,temp));
-                    else if (optionString[2].equals("SEMAINE")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]),Frequencie.SEMAINE,temp));
+                    if(optionString[2].equals("JOURNALIER")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]), Frequency.JOURNALIER,temp));
+                    else if(optionString[2].equals("SPORADIQUE")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]), Frequency.SPORADIQUE,temp));
+                    else if (optionString[2].equals("SEMAINE")) options.add(new Option(optionString[0],Double.parseDouble(optionString[1]), Frequency.SEMAINE,temp));
 
                     //ignore les coquilles
 

@@ -1,6 +1,6 @@
 package be.digitalcity.revision;
 
-public enum Frequencie {
+public enum Frequency {
     JOURNALIER,
     SPORADIQUE,
     SEMAINE;
